@@ -1,0 +1,10 @@
+word = input("Enter the text to be counted: ") #"You can have data without information, but you cannot have information without data."
+sentence = word.lower()
+my_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+count_list = []
+
+
+for i in range(0,25):
+  count_list.append(sentence.count(my_list[i]))
+  if count_list[i]>0:
+    print(my_list[i],":",count_list[i])
