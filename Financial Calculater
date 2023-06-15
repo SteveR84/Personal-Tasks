@@ -1,0 +1,46 @@
+import math
+
+print("investment - to calculate the amount of interst you'll earn on your investment")
+print("bond       - to calculate the amount you'll have to pay on a home loan \n")
+
+user_choice = input("Enter either 'investment' or 'bond' from the menu above to proceed: ")
+
+#if user_choice == "Investment" or user_choice == "investment" or user_choice == "INVESTMENT":
+if user_choice.lower() == "Investment":
+
+    depositing_amount = float(input("Enter How much money you are depositing (type in ONLY the value): "))
+    interest = float(input("Enter (only the number) of the interest rate (as a percentage) eg. 8 : "))
+    interest_rate = interest/100
+    years_investing = int(input("Enter the number of years you plan on investing: "))
+    simple_compound = input("Enter 'simple' if you want simple interst, or enter 'compound' if you want compound interst: ")
+    
+   # if simple_compound == "simple" or simple_compound == "Simple" or simple_compound == "SIMPLE":
+    if simple_compound.lower() == "simple":
+        total_amount = depositing_amount*(1 + interest_rate*years_investing)
+
+        print(f"Total amount if chosen simple interest is: {total_amount} ")
+    
+   # elif simple_compound == "compound" or simple_compound == "Compund" or simple_compound == "COMPOUND":
+    elif simple_compound.lower() == "compound":
+        total_amount = depositing_amount * math.pow ((1 + interest_rate), years_investing)
+
+        print(f"Total amount if chosen compound interest is: {round(total_amount,2)} ")
+
+    else:
+        print("Please Enter either 'simple' or 'compound' (check for spelling error)")
+
+
+# elif user_choice == "Bond" or  user_choice =="bond" or user_choice == "BOND":
+elif user_choice.lower() == "bond":
+
+    present_house_value = float(input("Enter your present value of the house (type in ONLY the value)eg. 1000: ")) 
+    intrest_rate_bond = float(input("Enter (only the number) of the interest rate (as a percentage) eg. 7: "))
+    monthly_interst_rate = (intrest_rate_bond/100)/12 # monthly interest is interest number devide by 100 for % then devide by 12 for month 
+    months_repay_bond = int(input("Enter the number of months you plan to take to repay the bond. eg. 120: "))
+
+    repayment = (monthly_interst_rate * present_house_value)/( 1 - (1 + monthly_interst_rate)**(-months_repay_bond))
+    # repayment = (i * P)/(1 - (1 + i)**(-n)) *** you missed the first 1 - ***
+    print(f"Amount of money you have to repay each month is: {round(repayment,2)}") 
+
+else:
+    print("Please enter either 'investment' or 'bond' (check for any spelling errors)")
